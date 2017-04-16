@@ -4,3 +4,5 @@ redis_checksum: '61b373c23d18e6cc752a69d5ab7f676c6216dc2853e46750a8c4ed791d68482
 redis_mirror: http://download.redis.io/releases
 
 redis_parent_src_dir: /usr/local
+
+redis_install_cleanup: True

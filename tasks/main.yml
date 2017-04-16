@@ -31,3 +31,14 @@
   args:
     chdir: '{{redis_src_dir}}'
     creates: '/usr/local/bin/redis-server'
+
+- name: cleanup
+  become: yes
+  become_user: root
+  when: redis_install_cleanup
+  with_items:
+    - '{{redis_src_dir}}'
+  file:
+    path: '{{item}}'
+    state: absent
+    
