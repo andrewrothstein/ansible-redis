@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Andrew Rothstein
-  description: '@TODO name this role'
+  description: builds Redis from src and installs
   company: BlackRock
   license:
     - MIT
