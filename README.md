@@ -1,6 +1,6 @@
-[![CircleCI](https://circleci.com/gh/andrewrothstein/ansible-redis.svg?style=svg)](https://circleci.com/gh/andrewrothstein/ansible-redis)
 andrewrothstein.redis
 =========
+[![CircleCI](https://circleci.com/gh/andrewrothstein/ansible-redis.svg?style=svg)](https://circleci.com/gh/andrewrothstein/ansible-redis)
 
 Installs [Redis](https://redis.io/).
 
