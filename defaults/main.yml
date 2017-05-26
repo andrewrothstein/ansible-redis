@@ -1,6 +1,6 @@
 ---
-redis_ver: '3.2.8'
-redis_checksum: '61b373c23d18e6cc752a69d5ab7f676c6216dc2853e46750a8c4ed791d68482c'
+redis_ver: '3.2.9'
+redis_checksum: '6eaacfa983b287e440d0839ead20c2231749d5d6b78bbe0e0ffa3a890c59ff26'
 redis_mirror: http://download.redis.io/releases
 
 redis_parent_src_dir: /usr/local
