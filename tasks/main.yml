@@ -4,6 +4,7 @@
   become_user: root
   get_url:
     url: '{{redis_tgz_url}}'
+    checksum: '{{redis_checksum}}'
     dest: /tmp/{{redis_tgz}}
     mode: 0644
 
