@@ -1,6 +1,6 @@
 andrewrothstein.redis
 =========
-[![CircleCI](https://circleci.com/gh/andrewrothstein/ansible-redis.svg?style=svg)](https://circleci.com/gh/andrewrothstein/ansible-redis)
+[![Build Status](https://travis-ci.org/andrewrothstein/ansible-redis.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-redis)
 
 Installs [Redis](https://redis.io/).
 
