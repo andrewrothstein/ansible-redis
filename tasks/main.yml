@@ -12,7 +12,7 @@
   become: yes
   become_user: root
   unarchive:
-    remote_src: no
+    remote_src: yes
     src: /tmp/{{redis_tgz}}
     dest: '{{redis_parent_src_dir}}'
     creates: '{{redis_src_dir}}'
