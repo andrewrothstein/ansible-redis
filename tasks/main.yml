@@ -1,4 +1,23 @@
 ---
+- name: resolve platform specific vars
+  include_vars: '{{item}}'
+  with_first_found:
+    - files:
+        - '{{ansible_distribution}}-{{ansible_distribution_release}}.yml'
+        - '{{ansible_distribution}}.yml'
+        - '{{ansible_os_family}}.yml'
+      skip: true
+      paths:
+        - '{{role_path}}/vars'
+
+- name: install dep pkgs...
+  become: yes
+  become_user: root
+  with_items: '{{redis_dep_pkgs|default([])}}'
+  package:
+    name: '{{item}}'
+    state: present
+
 - name: download tgz
   become: yes
   become_user: root
@@ -31,7 +50,7 @@
   command: make install
   args:
     chdir: '{{redis_src_dir}}'
-    creates: '/usr/local/bin/redis-server'
+    creates: /usr/local/bin/redis-server
 
 - name: cleanup
   become: yes
@@ -39,6 +58,7 @@
   when: redis_install_cleanup
   with_items:
     - '{{redis_src_dir}}'
+    - /tmp/{{redis_tgz}}
   file:
     path: '{{item}}'
     state: absent
