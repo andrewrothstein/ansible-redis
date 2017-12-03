@@ -3,8 +3,9 @@
 redis_name: redis-{{redis_ver}}
 redis_tgz: '{{redis_name}}.tar.gz'
 
-# http://download.redis.io/releases/redis-4.0.2.tar.gz
+# http://download.redis.io/releases/redis-4.0.5.tar.gz
 redis_tgz_url: '{{redis_mirror}}/{{redis_tgz}}'
 
 redis_src_dir: '{{redis_parent_src_dir}}/{{redis_name}}'
 
+redis_checksum: '{{redis_checksums[redis_ver]}}'
