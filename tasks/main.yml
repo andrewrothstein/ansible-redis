@@ -69,4 +69,3 @@
       file:
         path: '{{item}}'
         state: absent
-    

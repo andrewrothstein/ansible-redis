@@ -1,6 +1,6 @@
 ---
 redis_mirror: http://download.redis.io/releases
-redis_ver: '4.0.11'
+redis_ver: '5.0.0'
 
 redis_checksums:
   # http://download.redis.io/releases/redis-4.0.3.tar.gz
@@ -21,5 +21,7 @@ redis_checksums:
   '4.0.10' : sha256:1db67435a704f8d18aec9b9637b373c34aa233d65b6e174bdac4c1b161f38ca4
   # http://download.redis.io/releases/redis-4.0.11.tar.gz
   '4.0.11' : sha256:fc53e73ae7586bcdacb4b63875d1ff04f68c5474c1ddeda78f00e5ae2eed1bbb
+  # http://download.redis.io/releases/redis-5.0.0.tar.gz
+  '5.0.0' : sha256:70c98b2d0640b2b73c9d8adb4df63bcb62bad34b788fe46d1634b6cf87dc99a4
 
 redis_parent_src_dir: /usr/local
