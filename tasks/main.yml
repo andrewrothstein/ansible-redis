@@ -1,21 +1,21 @@
 ---
 - name: resolve platform specific vars
-  include_vars: '{{item}}'
+  include_vars: '{{ item }}'
   with_first_found:
     - files:
-        - '{{ansible_distribution}}-{{ansible_distribution_release}}.yml'
-        - '{{ansible_distribution}}.yml'
-        - '{{ansible_os_family}}.yml'
+        - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
       skip: true
       paths:
-        - '{{role_path}}/vars'
+        - '{{ role_path }}/vars'
 
 - name: install dep pkgs...
   become: yes
   become_user: root
-  with_items: '{{redis_dep_pkgs|default([])}}'
+  with_items: '{{ redis_dep_pkgs|default([]) }}'
   package:
-    name: '{{item}}'
+    name: '{{ item }}'
     state: present
 
 - name: check for install...
@@ -30,9 +30,9 @@
       become: yes
       become_user: root
       get_url:
-        url: '{{redis_tgz_url}}'
-        checksum: '{{redis_checksum}}'
-        dest: /tmp/{{redis_tgz}}
+        url: '{{ redis_tgz_url }}'
+        checksum: '{{ redis_checksum }}'
+        dest: /tmp/{{ redis_tgz }}
         mode: 0644
 
     - name: unarchive...
@@ -40,32 +40,32 @@
       become_user: root
       unarchive:
         remote_src: yes
-        src: /tmp/{{redis_tgz}}
-        dest: '{{redis_parent_src_dir}}'
-        creates: '{{redis_src_dir}}'
+        src: /tmp/{{ redis_tgz }}
+        dest: '{{ redis_parent_src_dir }}'
+        creates: '{{ redis_src_dir }}'
 
     - name: make...
       become: yes
       become_user: root
       command: make
       args:
-        chdir: '{{redis_src_dir}}'
-        creates: '{{redis_src_dir}}/src/redis-server'
+        chdir: '{{ redis_src_dir }}'
+        creates: '{{ redis_src_dir }}/src/redis-server'
 
     - name: install...
       become: yes
       become_user: root
       command: make install
       args:
-        chdir: '{{redis_src_dir}}'
+        chdir: '{{ redis_src_dir }}'
         creates: /usr/local/bin/redis-server
   always:
     - name: cleanup
       become: yes
       become_user: root
       with_items:
-        - '{{redis_src_dir}}'
-        - /tmp/{{redis_tgz}}
+        - '{{ redis_src_dir }}'
+        - /tmp/{{ redis_tgz }}
       file:
-        path: '{{item}}'
+        path: '{{ item }}'
         state: absent

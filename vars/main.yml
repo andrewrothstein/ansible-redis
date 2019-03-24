@@ -1,10 +1,10 @@
 ---
 # vars file for redis
-redis_name: redis-{{redis_ver}}
-redis_tgz: '{{redis_name}}.tar.gz'
+redis_name: redis-{{ redis_ver }}
+redis_tgz: '{{ redis_name }}.tar.gz'
 
-redis_tgz_url: '{{redis_mirror}}/{{redis_tgz}}'
+redis_tgz_url: '{{ redis_mirror }}/{{ redis_tgz }}'
 
-redis_src_dir: '{{redis_parent_src_dir}}/{{redis_name}}'
+redis_src_dir: '{{ redis_parent_src_dir }}/{{ redis_name }}'
 
-redis_checksum: '{{redis_checksums[redis_ver]}}'
+redis_checksum: '{{ redis_checksums[redis_ver] }}'
