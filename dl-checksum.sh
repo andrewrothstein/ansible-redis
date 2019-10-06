@@ -11,4 +11,4 @@ then
 fi
 
 printf "  # %s\n" $URL
-printf "  '%s': sha512:%s\n" $VER $(sha256sum $LFILE | awk '{print $1}')
+printf "  '%s': sha256:%s\n" $VER $(sha256sum $LFILE | awk '{print $1}')

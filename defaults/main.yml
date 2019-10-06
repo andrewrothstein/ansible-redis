@@ -34,6 +34,6 @@ redis_checksums:
   # http://download.redis.io/releases/redis-5.0.4.tar.gz
   '5.0.4': sha256:3ce9ceff5a23f60913e1573f6dfcd4aa53b42d4a2789e28fa53ec2bd28c987dd
   # http://download.redis.io/releases/redis-5.0.5.tar.gz
-  '5.0.5': sha512:2139009799d21d8ff94fc40b7f36ac46699b9e1254086299f8d3b223ca54a375
+  '5.0.5': sha256:2139009799d21d8ff94fc40b7f36ac46699b9e1254086299f8d3b223ca54a375
   # http://download.redis.io/releases/redis-5.0.6.tar.gz
-  '5.0.6': sha512:6624841267e142c5d5d5be292d705f8fb6070677687c5aad1645421a936d22b3
+  '5.0.6': sha256:6624841267e142c5d5d5be292d705f8fb6070677687c5aad1645421a936d22b3
