@@ -1,14 +1,22 @@
 #!/usr/bin/env sh
-VER=${1:-5.0.6}
+#set -x
+
 DIR=~/Downloads
-FILE=redis-${VER}.tar.gz
-URL=http://download.redis.io/releases/$FILE
-LFILE=$DIR/$FILE
+MIRROR=http://download.redis.io/releases
 
-if [ ! -e $LFILE ];
-then
-    wget -q -O $LFILE $URL
-fi
+dl_ver() {
+    local ver=$1
+    local file=redis-${ver}.tar.gz
+    local url=$MIRROR/$file
+    local lfile=$DIR/$file
 
-printf "  # %s\n" $URL
-printf "  '%s': sha256:%s\n" $VER $(sha256sum $LFILE | awk '{print $1}')
+    if [ ! -e $lfile ];
+    then
+        wget -q -O $lfile $url
+    fi
+
+    printf "  # %s\n" $url
+    printf "  '%s': sha256:%s\n" $ver $(sha256sum $lfile | awk '{print $1}')
+}
+
+dl_ver ${1:-5.0.7}
