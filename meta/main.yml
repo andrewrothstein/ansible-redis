@@ -1,8 +1,8 @@
 dependencies:
 - role: andrewrothstein.unarchive-deps
-  version: v1.1.3
+  version: v1.1.5
 - role: andrewrothstein.gcc-toolbox
-  version: v1.1.1
+  version: v1.1.2
 galaxy_info:
   author: Andrew Rothstein
   company: BlackRock
@@ -13,10 +13,20 @@ galaxy_info:
   - MIT
   min_ansible_version: 2.0
   platforms:
+  - name: Alpine
+    versions:
+    - all
+  - name: Archlinux
+    versions:
+    - all
   - name: EL
     versions:
     - 8
   - name: Fedora
+    versions:
+    - 31
+    - 32
+  - name: Gentoo
     versions:
     - all
   - name: Debian
@@ -26,7 +36,5 @@ galaxy_info:
   - name: Ubuntu
     versions:
     - bionic
+    - focal
     - xenial
-  - name: Alpine
-    versions:
-    - all
