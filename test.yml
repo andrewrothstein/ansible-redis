@@ -1,4 +1,10 @@
 ---
 - hosts: all
   roles:
-    - role: '{{playbook_dir}}'
+    - role: '{{ playbook_dir }}'
+  tasks:
+    - command: /usr/local/bin/redis-server --version
+      register: redis_test_output
+    - name: redis-server --version
+      debug:
+        msg: '{{ redis_test_output.stdout }}'

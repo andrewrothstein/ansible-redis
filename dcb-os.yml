@@ -3,6 +3,7 @@
 - alpine_edge
 - archlinux_latest
 - centos_8
+- debian_bullseye
 - debian_buster
 - debian_stretch
 - fedora_31

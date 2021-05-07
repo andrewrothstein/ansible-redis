@@ -1,6 +1,6 @@
 dependencies:
 - role: andrewrothstein.unarchive-deps
-  version: v1.1.5
+  version: v1.2.0
 - role: andrewrothstein.gcc-toolbox
   version: v1.1.2
 galaxy_info:
@@ -19,6 +19,11 @@ galaxy_info:
   - name: Archlinux
     versions:
     - all
+  - name: Debian
+    versions:
+    - bullseye
+    - buster
+    - stretch
   - name: EL
     versions:
     - 8
@@ -26,10 +31,6 @@ galaxy_info:
     versions:
     - 31
     - 32
-  - name: Debian
-    versions:
-    - buster
-    - stretch
   - name: Ubuntu
     versions:
     - bionic

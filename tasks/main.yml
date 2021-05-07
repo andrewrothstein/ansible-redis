@@ -18,33 +18,33 @@
     name: '{{ item }}'
     state: present
 
-- name: check for install...
+- name: check for install at {{ redis_install_exe }}
   become: yes
   stat:
-    path: /usr/local/bin/redis-server
+    path: '{{ redis_install_exe }}'
   changed_when: False
   register: redis_binary
 - when: not redis_binary.stat.exists
   block:
-    - name: download tgz
+    - name: downloading {{ redis_tgz_url }}
       become: yes
       become_user: root
       get_url:
         url: '{{ redis_tgz_url }}'
         checksum: '{{ redis_checksum }}'
-        dest: /tmp/{{ redis_tgz }}
+        dest: '{{ redis_tmp_tgz }}'
         mode: 0644
 
-    - name: unarchive...
+    - name: unarchive {{ redis_tmp_tgz }}
       become: yes
       become_user: root
       unarchive:
         remote_src: yes
-        src: /tmp/{{ redis_tgz }}
+        src: '{{ redis_tmp_tgz }}'
         dest: '{{ redis_parent_src_dir }}'
         creates: '{{ redis_src_dir }}'
 
-    - name: make...
+    - name: make in {{ redis_src_dir }}
       become: yes
       become_user: root
       command: make
@@ -52,20 +52,20 @@
         chdir: '{{ redis_src_dir }}'
         creates: '{{ redis_src_dir }}/src/redis-server'
 
-    - name: install...
+    - name: make install in {{ redis_src_dir }}
       become: yes
       become_user: root
       command: make install
       args:
         chdir: '{{ redis_src_dir }}'
-        creates: /usr/local/bin/redis-server
+        creates: '{{ redis_install_exe }}'
   always:
     - name: cleanup
       become: yes
       become_user: root
       with_items:
         - '{{ redis_src_dir }}'
-        - /tmp/{{ redis_tgz }}
+        - '{{ redis_tmp_tgz }}'
       file:
         path: '{{ item }}'
         state: absent
