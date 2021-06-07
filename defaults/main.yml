@@ -65,3 +65,7 @@ redis_checksums:
   '6.0.10': sha256:79bbb894f9dceb33ca699ee3ca4a4e1228be7fb5547aeb2f99d921e86c1285bd
   # http://download.redis.io/releases/redis-6.2.2.tar.gz
   '6.2.2': sha256:7a260bb74860f1b88c3d5942bf8ba60ca59f121c6dce42d3017bed6add0b9535
+  # http://download.redis.io/releases/redis-6.2.3.tar.gz
+  '6.2.3': sha256:98ed7d532b5e9671f5df0825bb71f0f37483a16546364049384c63db8764512b
+  # http://download.redis.io/releases/redis-6.2.4.tar.gz
+  '6.2.4': sha256:ba32c406a10fc2c09426e2be2787d74ff204eb3a2e496d87cff76a476b6ae16e
