@@ -1,6 +1,6 @@
 andrewrothstein.redis
 =========
-[![Build Status](https://travis-ci.org/andrewrothstein/ansible-redis.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-redis)
+![Build Status](https://github.com/andrewrothstein/ansible-redis/actions/workflows/build.yml/badge.svg)
 
 Installs [Redis](https://redis.io/).
 
