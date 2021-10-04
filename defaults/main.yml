@@ -1,6 +1,6 @@
 ---
 redis_mirror: http://download.redis.io/releases
-redis_ver: 6.2.5
+redis_ver: 6.2.6
 
 redis_parent_src_dir: /usr/local
 
@@ -71,3 +71,5 @@ redis_checksums:
   '6.2.4': sha256:ba32c406a10fc2c09426e2be2787d74ff204eb3a2e496d87cff76a476b6ae16e
   # http://download.redis.io/releases/redis-6.2.5.tar.gz
   '6.2.5': sha256:4b9a75709a1b74b3785e20a6c158cab94cf52298aa381eea947a678a60d551ae
+  # http://download.redis.io/releases/redis-6.2.6.tar.gz
+  '6.2.6': sha256:5b2b8b7a50111ef395bf1c1d5be11e6e167ac018125055daa8b5c2317ae131ab
