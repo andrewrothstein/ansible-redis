@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-#set -x
+set -e
 
 DIR=~/Downloads
 MIRROR=http://download.redis.io/releases
@@ -12,11 +12,11 @@ dl_ver() {
 
     if [ ! -e $lfile ];
     then
-        wget -q -O $lfile $url
+        curl -sSLf -o $lfile $url
     fi
 
     printf "  # %s\n" $url
     printf "  '%s': sha256:%s\n" $ver $(sha256sum $lfile | awk '{print $1}')
 }
 
-dl_ver ${1:-6.2.6}
+dl_ver ${1:-7.0.0}
