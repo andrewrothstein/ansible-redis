@@ -1,6 +1,6 @@
 ---
 redis_mirror: http://download.redis.io/releases
-redis_ver: 7.0.1
+redis_ver: 7.0.3
 
 redis_parent_src_dir: /usr/local
 
@@ -77,3 +77,7 @@ redis_checksums:
   '7.0.0': sha256:284d8bd1fd85d6a55a05ee4e7c31c31977ad56cbf344ed83790beeb148baa720
   # http://download.redis.io/releases/redis-7.0.1.tar.gz
   '7.0.1': sha256:ca1820d527e4759884620be2917079e61e996fa81da5fbe5c07c4a7b507264dc
+  # http://download.redis.io/releases/redis-7.0.2.tar.gz
+  '7.0.2': sha256:5e57eafe7d4ac5ecb6a7d64d6b61db775616dbf903293b3fcc660716dbda5eeb
+  # http://download.redis.io/releases/redis-7.0.3.tar.gz
+  '7.0.3': sha256:2cde7d17214ffe305953da9fff12333e8a72caa57fd4923e4872f6362a208e73
