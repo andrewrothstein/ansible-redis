@@ -15,7 +15,7 @@
         - '{{ role_path }}/vars'
 
 - name: install dep pkgs...
-  become: yes
+  become: true
   become_user: root
   with_items: '{{ redis_dep_pkgs|default([]) }}'
   package:
@@ -23,15 +23,15 @@
     state: present
 
 - name: check for install at {{ redis_install_exe }}
-  become: yes
+  become: true
   stat:
     path: '{{ redis_install_exe }}'
-  changed_when: False
+  changed_when: false
   register: redis_binary
 - when: not redis_binary.stat.exists
   block:
     - name: downloading {{ redis_tgz_url }}
-      become: yes
+      become: true
       become_user: root
       get_url:
         url: '{{ redis_tgz_url }}'
@@ -40,16 +40,16 @@
         mode: 0644
 
     - name: unarchive {{ redis_tmp_tgz }}
-      become: yes
+      become: true
       become_user: root
       unarchive:
-        remote_src: yes
+        remote_src: true
         src: '{{ redis_tmp_tgz }}'
         dest: '{{ redis_parent_src_dir }}'
         creates: '{{ redis_src_dir }}'
 
     - name: make in {{ redis_src_dir }}
-      become: yes
+      become: true
       become_user: root
       command: make
       args:
@@ -57,7 +57,7 @@
         creates: '{{ redis_src_dir }}/src/redis-server'
 
     - name: make install in {{ redis_src_dir }}
-      become: yes
+      become: true
       become_user: root
       command: make install
       args:
@@ -65,7 +65,7 @@
         creates: '{{ redis_install_exe }}'
   always:
     - name: cleanup
-      become: yes
+      become: true
       become_user: root
       with_items:
         - '{{ redis_src_dir }}'
