@@ -1,10 +1,12 @@
 ---
-- include_role:
-    name: andrewrothstein.unarchive-deps
-- include_role:
-    name: andrewrothstein.gcc-toolbox
-- name: resolve platform specific vars
-  include_vars: '{{ item }}'
+- name: Installing andrewrothstien.unarchivedeps
+  ansible.builtin.include_role:
+    name: andrewrothstein.unarchivedeps
+- name: Installing andrewrothstein.gcc_toolbox
+  ansible.builtin.include_role:
+    name: andrewrothstein.gcc_toolbox
+- name: Resolve platform specific vars
+  ansible.builtin.include_vars: '{{ item }}'
   with_first_found:
     - files:
         - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
@@ -14,62 +16,62 @@
       paths:
         - '{{ role_path }}/vars'
 
-- name: install dep pkgs...
+- name: Install dep pkgs...
   become: true
   become_user: root
-  with_items: '{{ redis_dep_pkgs|default([]) }}'
-  package:
-    name: '{{ item }}'
+  ansible.builtin.package:
+    name: '{{ redis_dep_pkgs | default([]) }}'
     state: present
 
-- name: check for install at {{ redis_install_exe }}
+- name: Check for install at {{ redis_install_exe }}
   become: true
-  stat:
+  ansible.builtin.stat:
     path: '{{ redis_install_exe }}'
   changed_when: false
   register: redis_binary
-- when: not redis_binary.stat.exists
+- name: Downloading, building, installing redis
+  when: not redis_binary.stat.exists
   block:
-    - name: downloading {{ redis_tgz_url }}
+    - name: Downloading {{ redis_tgz_url }}
       become: true
       become_user: root
-      get_url:
+      ansible.builtin.get_url:
         url: '{{ redis_tgz_url }}'
         checksum: '{{ redis_checksum }}'
         dest: '{{ redis_tmp_tgz }}'
-        mode: 0644
+        mode: '644'
 
-    - name: unarchive {{ redis_tmp_tgz }}
+    - name: Unarchive {{ redis_tmp_tgz }}
       become: true
       become_user: root
-      unarchive:
+      ansible.builtin.unarchive:
         remote_src: true
         src: '{{ redis_tmp_tgz }}'
         dest: '{{ redis_parent_src_dir }}'
         creates: '{{ redis_src_dir }}'
 
-    - name: make in {{ redis_src_dir }}
+    - name: Make in {{ redis_src_dir }}
       become: true
       become_user: root
-      command: make
+      ansible.builtin.command: make
       args:
         chdir: '{{ redis_src_dir }}'
         creates: '{{ redis_src_dir }}/src/redis-server'
 
-    - name: make install in {{ redis_src_dir }}
+    - name: Make install in {{ redis_src_dir }}
       become: true
       become_user: root
-      command: make install
+      ansible.builtin.command: make install
       args:
         chdir: '{{ redis_src_dir }}'
         creates: '{{ redis_install_exe }}'
   always:
-    - name: cleanup
+    - name: Cleanup
       become: true
       become_user: root
       with_items:
         - '{{ redis_src_dir }}'
         - '{{ redis_tmp_tgz }}'
-      file:
+      ansible.builtin.file:
         path: '{{ item }}'
         state: absent
